@@ -39,31 +39,5 @@ ACCEPT      net     $FW     tcp     2222
 
 
 DNAT    net     loc:10.1.2.100      tcp 3389
-DNAT    net     loc:10.1.2.1        tcp 53
-DNAT    net     loc:10.1.2.1        udp 53
-DNAT    net     loc:10.1.2.1        tcp 80
-DNAT    net     loc:10.1.2.1        udp 80
-DNAT    net     loc:10.1.2.1        tcp 110
-DNAT    net     loc:10.1.2.1        udp 110
-DNAT    net     loc:10.1.2.1        tcp 143
-DNAT    net     loc:10.1.2.1        udp 143
-DNAT    net     loc:10.1.2.1        tcp 993
-DNAT    net     loc:10.1.2.1        udp 993
-DNAT    net     loc:10.1.2.1        tcp 21
-DNAT    net     loc:10.1.2.1        udp 21
-DNAT    net     loc:10.1.2.1:22     tcp 2223
-
-
-
-DNAT    net     loc:10.1.2.2        tcp 25
-DNAT    net     loc:10.1.2.2        udp 25
-DNAT    net     loc:10.1.2.2:80     tcp 8080
-DNAT    net     loc:10.1.2.2:80     udp 8080
-DNAT    net     loc:10.1.2.2:22     tcp 2224
-DNAT    net     loc:10.1.2.2        tcp 587
-DNAT    net     loc:10.1.2.2        udp 587
-DNAT    net     loc:10.1.2.2        tcp 465
-DNAT    net     loc:10.1.2.2        udp 465
-DNAT    net     loc:10.1.2.2        tcp 10000
 
 
