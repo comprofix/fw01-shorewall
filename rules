@@ -33,11 +33,20 @@ Ping(ACCEPT)    net     $FW
 ACCEPT		$FW		loc		icmp
 ACCEPT		$FW		net		icmp
 
-ACCEPT      net     $FW     tcp     2222
+ACCEPT      net     $FW     tcp     22
 
 #Port Forwards
 
 
-DNAT    net     loc:10.1.2.100      tcp 3389
+DNAT    net     loc:192.168.0.1         tcp 3389
+DNAT    net     loc:192.168.0.2:3389    tcp 3390
+DNAT    net     loc:192.168.0.2:22      tcp 2222
+DNAT    net     loc:192.168.0.5:22      tcp 2223
+DNAT    net     loc:192.168.0.2         tcp 80,443
+DNAT    net     loc:192.168.0.2         tcp 51001:51250
+DNAT    net     loc:192.168.0.2:58846   tcp 58846
+DNAT    net     loc:192.168.0.2:8112    tcp 8112
 
+DNAT    net     loc:192.168.0.5         tcp 5666
 
+DNAT    net     loc:192.168.0.5:80      tcp 8080
