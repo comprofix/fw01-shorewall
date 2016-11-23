@@ -28,23 +28,24 @@ Invalid(DROP)	net		all		tcp
 Ping(ACCEPT)	loc		$FW
 Ping(ACCEPT)    net     $FW
 
-#
-# Allow Ping
-ACCEPT		$FW		loc		icmp
-ACCEPT		$FW		net		icmp
-
-ACCEPT      net     $FW     tcp     22
 
 #Port Forwards
 
+# RDP 
+DNAT    net:home.comprofix.com          loc:192.168.0.1         tcp 3389            # Windows - from home
+DNAT    net:office.ambient-it.com.au    loc:192.168.0.1         tcp 3389            # Windows - from home
+DNAT    net:home.comprofix.com          loc:192.168.0.2:3389    tcp 3390            # Seedbox - Linux
 
-DNAT    net     loc:192.168.0.1         tcp 3389
-DNAT    net     loc:192.168.0.2:3389    tcp 3390
-DNAT    net     loc:192.168.0.2:22      tcp 2222
-DNAT    net     loc:192.168.0.5:22      tcp 2223
-DNAT    net     loc:192.168.0.2         tcp 80,443
+# SSH 
+DNAT            net:home.comprofix.com          loc:192.168.0.2:22      tcp 2222     # Seedbox
+DNAT            net:office.ambient-it.com.au    loc:192.168.0.2:22      tcp 2222     # Seedbox
+
+# torrents
 DNAT    net     loc:192.168.0.2         tcp 51001:51250
-DNAT    net     loc:192.168.0.2:58846   tcp 58846
-DNAT    net     loc:192.168.0.2:8112    tcp 8112
-DNAT    net     loc:192.168.0.5         tcp 5666
-DNAT    net     loc:192.168.0.5:80      tcp 8080
+
+# Deluge 
+DNAT    net:home.comprofix.com          loc:192.168.0.2:58846   tcp 58846                              # Deluge App
+DNAT    net:office.ambient-it.com.au    loc:192.168.0.2:58846   tcp 58846                              # Deluge App
+
+DNAT    net:home.comprofix.com          loc:192.168.0.2:8112    tcp 8112                               # Deluge Webapp
+DNAT    net:office.ambient-it.com.au    loc:192.168.0.2:8112    tcp 8112                               # Deluge Webapp
