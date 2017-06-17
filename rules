@@ -32,20 +32,40 @@ Ping(ACCEPT)    net     $FW
 #Port Forwards
 
 # RDP 
-DNAT    net:home.comprofix.com          loc:192.168.0.1         tcp 3389            # Windows - from home
-DNAT    net:office.ambient-it.com.au    loc:192.168.0.1         tcp 3389            # Windows - from home
-DNAT    net:home.comprofix.com          loc:192.168.0.2:3389    tcp 3390            # Seedbox - Linux
+#DNAT    net:home.comprofix.com          loc:192.168.0.1         tcp 3389            # Windows - from home
+#DNAT    net:office.ambient-it.com.au    loc:192.168.0.1         tcp 3389            # Windows - from home
+DNAT    net          loc:192.168.0.1         tcp 3389        
+DNAT    net        loc:192.168.0.2:3389    tcp 3390            # Seedbox - Linux
 
 # SSH 
-DNAT            net:home.comprofix.com          loc:192.168.0.2:22      tcp 2222     # Seedbox
-DNAT            net:office.ambient-it.com.au    loc:192.168.0.2:22      tcp 2222     # Seedbox
+#DNAT            net:home.comprofix.com          loc:192.168.0.2:22      tcp 2222     # Seedbox
+#DNAT            net:office.ambient-it.com.au    loc:192.168.0.2:22      tcp 2222     # Seedbox
+DNAT            net    loc:192.168.0.2:22      tcp 2222     # Seedbox
+SSH(ACCEPT)     net:home.comprofix.com          $FW                         # fw01
+SSH(ACCEPT)     net:office.ambient-it.com.au    $FW                         # fw01
+
+ACCEPT  net     $FW      tcp 8080
 
 # torrents
 DNAT    net     loc:192.168.0.2         tcp 51001:51250
 
 # Deluge 
-DNAT    net:home.comprofix.com          loc:192.168.0.2:58846   tcp 58846                              # Deluge App
-DNAT    net:office.ambient-it.com.au    loc:192.168.0.2:58846   tcp 58846                              # Deluge App
+#DNAT    net:home.comprofix.com          loc:192.168.0.2:58846   tcp 58846                              # Deluge App
+#DNAT    net:office.ambient-it.com.au    loc:192.168.0.2:58846   tcp 58846                              # Deluge App
+DNAT    net   loc:192.168.0.2:58846   tcp 58846                              # Deluge App
+
 
 DNAT    net:home.comprofix.com          loc:192.168.0.2:8112    tcp 8112                               # Deluge Webapp
 DNAT    net:office.ambient-it.com.au    loc:192.168.0.2:8112    tcp 8112                               # Deluge Webapp
+
+
+#HTTP(ACCEPT)    net     loc:192.168.0.50
+#HTTPS(ACCEPT)   net     loc:192.168.0.50
+
+DNS(ACCEPT)     net     loc:192.168.0.50
+
+DNAT            net     loc:192.168.0.3 tcp 25
+DNAT            net     loc:192.168.0.3 tcp 80
+DNAT            net     loc:192.168.0.3 tcp 443
+DNAT            net     loc:192.168.0.3 tcp 10000
+

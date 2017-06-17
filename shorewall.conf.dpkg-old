@@ -1,6 +1,6 @@
 ###############################################################################
 #
-#  Shorewall Version 5 -- /etc/shorewall/shorewall.conf
+#  Shorewall Version 4 -- /etc/shorewall/shorewall.conf
 #
 #  For information about the settings in this file, type "man shorewall.conf"
 #
@@ -18,18 +18,6 @@ STARTUP_ENABLED=Yes
 VERBOSITY=1
 
 ###############################################################################
-#			        P A G E R
-###############################################################################
-
-PAGER=
-
-###############################################################################
-#			     F I R E W A L L
-###############################################################################
-
-FIREWALL=
-
-###############################################################################
 #			       L O G G I N G
 ###############################################################################
 
@@ -41,7 +29,7 @@ LOG_BACKEND=
 
 LOG_MARTIANS=Yes
 
-LOG_VERBOSITY=2
+LOG_VERBOSITY=1
 
 LOGALLNEW=
 
@@ -99,7 +87,7 @@ RESTOREFILE=restore
 
 SHOREWALL_SHELL=/bin/sh
 
-SUBSYSLOCK=
+SUBSYSLOCK=""
 
 TC=
 
@@ -134,19 +122,22 @@ ADD_SNAT_ALIASES=No
 
 ADMINISABSENTMINDED=Yes
 
+BASIC_FILTERS=No
+
+IGNOREUNKNOWNVARIABLES=No
+
 AUTOCOMMENT=Yes
 
 AUTOHELPERS=Yes
 
 AUTOMAKE=No
 
-BASIC_FILTERS=No
-
-BLACKLIST="NEW,INVALID,UNTRACKED"
+#BLACKLIST="NEW,INVALID,UNTRACKED"
+BLACKLIST="ALL"
 
 CHAIN_SCRIPTS=Yes
 
-CLAMPMSS=No
+CLAMPMSS=Yes
 
 CLEAR_TC=Yes
 
@@ -159,8 +150,6 @@ DELETE_THEN_ADD=Yes
 DETECT_DNAT_IPADDRS=No
 
 DISABLE_IPV6=No
-
-DOCKER=No
 
 DONT_LOAD=
 
@@ -176,17 +165,17 @@ FORWARD_CLEAR_MARK=
 
 HELPERS=
 
-IGNOREUNKNOWNVARIABLES=No
-
 IMPLICIT_CONTINUE=No
 
-INLINE_MATCHES=No
+INLINE_MATCHES=Yes
 
 IPSET_WARNINGS=Yes
 
-IP_FORWARDING=Keep
+IP_FORWARDING=Yes
 
 KEEP_RT_TABLES=No
+
+LEGACY_FASTSTART=Yes
 
 LOAD_HELPERS_ONLY=Yes
 
@@ -199,8 +188,6 @@ MANGLE_ENABLED=Yes
 MAPOLDACTIONS=No
 
 MARK_IN_FORWARD_CHAIN=No
-
-MINIUPNPD=No
 
 MODULE_SUFFIX=ko
 
@@ -217,8 +204,6 @@ OPTIMIZE_ACCOUNTING=No
 REJECT_ACTION=
 
 REQUIRE_INTERFACE=No
-
-RESTART=restart
 
 RESTORE_DEFAULT_ROUTE=Yes
 
@@ -248,13 +233,7 @@ USE_PHYSICAL_NAMES=No
 
 USE_RT_NAMES=No
 
-VERBOSE_MESSAGES=Yes
-
 WARNOLDCAPVERSION=Yes
-
-WORKAROUNDS=No
-
-ZERO_MARKS=No
 
 ZONE2ZONE=-
 
@@ -293,3 +272,10 @@ PROVIDER_OFFSET=
 MASK_BITS=
 
 ZONE_BITS=0
+
+################################################################################
+#			     L E G A C Y  O P T I O N
+#		       D O  N O T  D E L E T E	O R  A L T E R
+################################################################################
+
+IPSECFILE=zones
